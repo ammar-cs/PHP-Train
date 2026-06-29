@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ── Font tokens ─────────────────────────────────────────── */
+@theme {
+  --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body:    'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* Richer blue palette */
+  --color-brand-50:  #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-500: #2563eb;
+  --color-brand-600: #1d4ed8;
+  --color-brand-700: #1e40af;
+
+  /* Warm amber accent (key takeaway) */
+  --color-accent-50:  #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+  }
+  body {
+    /* Warm off-white — easier on the eyes in a meeting room */
+    background-color: #f5f4f2;
+    color: #1e293b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+/* ── Card fade-in on mount ───────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.35s ease both;
+}
+
+/* Staggered children */
+.stagger-grid > *:nth-child(1)  { animation-delay: 0.03s; }
+.stagger-grid > *:nth-child(2)  { animation-delay: 0.06s; }
+.stagger-grid > *:nth-child(3)  { animation-delay: 0.09s; }
+.stagger-grid > *:nth-child(4)  { animation-delay: 0.12s; }
+.stagger-grid > *:nth-child(5)  { animation-delay: 0.15s; }
+.stagger-grid > *:nth-child(6)  { animation-delay: 0.18s; }
+.stagger-grid > *:nth-child(7)  { animation-delay: 0.21s; }
+.stagger-grid > *:nth-child(8)  { animation-delay: 0.24s; }
+.stagger-grid > *:nth-child(9)  { animation-delay: 0.27s; }
+.stagger-grid > *:nth-child(n+10) { animation-delay: 0.30s; }
+
+/* ── Custom range input ──────────────────────────────────── */
+input[type='range'].seek-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+  transition: height 0.15s ease;
+}
+input[type='range'].seek-bar:hover {
+  height: 8px;
+}
+input[type='range'].seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+input[type='range'].seek-bar:hover::-webkit-slider-thumb {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(29,78,216,0.35);
+}
+input[type='range'].seek-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+input[type='range'].volume-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+}
+input[type='range'].volume-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+input[type='range'].volume-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  border: 2px solid #fff;
+}
